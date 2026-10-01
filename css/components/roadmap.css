@@ -1,7 +1,7 @@
 /* =========================================================
    Learning roadmap
    ========================================================= */
-.roadmap-col { position: sticky; top: 80px; align-self: flex-start; }
+.path-page { max-width: 520px; }  /* centred single column on the path page */
 .unit-banner {
   border-radius: 16px;
   color: #fff;
@@ -88,6 +88,3 @@
 .path .zig-2               { --x: -80px; }
 .path .zig-5, .path .zig-7 { --x: 55px; }
 .path .zig-6               { --x: 80px; }
-
-/* On small screens the roadmap is not sticky */
-@media (max-width: 991.98px) { .roadmap-col { position: static; } }

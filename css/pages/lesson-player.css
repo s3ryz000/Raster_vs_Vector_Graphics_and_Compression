@@ -1,0 +1,49 @@
+/* =========================================================
+   Lesson page: top bar, step stage, bottom action bar, complete screen
+   ========================================================= */
+.lesson-page { min-height: 100vh; display: flex; flex-direction: column; }
+.lesson-page .stage { flex: 1 0 auto; }
+.lesson-container { max-width: 760px; }
+
+/* Top bar: exit · progress · hearts */
+.lesson-bar { background: var(--surface); border-bottom: 2px solid var(--line); }
+.lesson-close {
+  display: inline-grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  color: var(--muted);
+}
+.lesson-close:hover { background: var(--line); color: var(--ink); }
+.lesson-close svg { width: 22px; height: 22px; }
+
+/* Step headings receive focus for screen readers; no visible ring needed */
+.stage h1:focus { outline: none; }
+
+/* Bottom action bar stays in reach while the step scrolls */
+.action-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: var(--surface);
+  border-top: 2px solid var(--line);
+}
+
+/* Lesson content extras */
+.lesson-card pre { background: var(--bg); border: 2px solid var(--line); border-radius: 12px; padding: 1rem; font-size: .85rem; }
+.lesson-figure { width: 100%; max-width: 360px; height: auto; }
+
+/* Lesson complete screen */
+.complete-emoji { font-size: 4rem; line-height: 1; margin: 1rem 0 .5rem; }
+.stars { display: flex; justify-content: center; gap: .5rem; }
+.star { width: 44px; height: 44px; fill: var(--line); }
+.star.is-earned { fill: var(--gold); }
+.stat-card {
+  height: 100%;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: .6rem .4rem;
+  background: var(--surface);
+}
+.stat-card .label { font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.stat-card .value { font-size: 1.3rem; font-weight: 900; }

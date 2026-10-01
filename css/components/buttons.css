@@ -21,3 +21,15 @@
   color: var(--ink);
   box-shadow: 0 3px 0 var(--line);
 }
+
+/* Pill-shaped chips: labels and preset buttons */
+.chip {
+  border: 2px solid var(--line);
+  border-radius: 99px;
+  background: #fff;
+  padding: .25rem .9rem;
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: .04em;
+}
+.chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }

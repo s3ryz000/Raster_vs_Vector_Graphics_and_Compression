@@ -1,0 +1,11 @@
+/* =========================================================
+   JPEG quality widget (Lesson 11)
+   ========================================================= */
+.jpeg-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  image-rendering: pixelated;   /* enlarge without smoothing, so artefacts stay visible */
+}

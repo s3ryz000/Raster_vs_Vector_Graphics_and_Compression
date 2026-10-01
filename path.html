@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your path · Raster &amp; Vector Academy</title>
+  <meta name="description" content="Your learning path through raster vs vector graphics and compression.">
+
+  <!-- Bootstrap 5 + Google Font (Nunito) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles: order matters (base → components) -->
+  <link href="css/base/tokens.css" rel="stylesheet">
+  <link href="css/base/typography.css" rel="stylesheet">
+  <link href="css/components/navbar.css" rel="stylesheet">
+  <link href="css/components/buttons.css" rel="stylesheet">
+  <link href="css/components/roadmap.css" rel="stylesheet">
+  <link href="css/base/accessibility.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===================== Header / Nav ===================== -->
+  <header class="app-nav sticky-top">
+    <nav class="navbar container py-2" aria-label="Main">
+      <a class="navbar-brand fs-4" href="path.html">Raster&nbsp;&amp;&nbsp;Vector Academy</a>
+      <ul class="list-unstyled d-flex align-items-center gap-3 mb-0">
+        <li class="stat" title="Day streak">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ff9600" d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 2 1.2 3 2.5 3C12 8 10.5 5 12 2Z"/></svg>
+          <span id="streak">0</span><span class="visually-hidden"> day streak</span>
+        </li>
+        <li class="stat" title="Experience points">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffc800" d="m12 2 3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8L12 2Z"/></svg>
+          <span id="xp">0</span>&nbsp;<span class="visually-hidden">experience points</span><span aria-hidden="true">XP</span>
+        </li>
+        <li class="stat" title="Hearts">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ff4b4b" d="M12 21 3.5 12.8A5 5 0 0 1 12 6a5 5 0 0 1 8.5 6.8L12 21Z"/></svg>
+          <span id="hearts">5</span><span class="visually-hidden"> hearts</span>
+        </li>
+        <li class="dropdown">
+          <button class="btn btn-outline-chunky btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span id="userName">You</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item" type="button" id="resetBtn">Reset progress</button></li>
+            <li><button class="dropdown-item" type="button" id="signOutBtn">Sign out</button></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="container pb-2">
+      <div class="d-flex justify-content-between small fw-bold text-secondary mb-1">
+        <span>Course progress</span><span id="progressText">0 / 11 lessons</span>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="11" aria-valuenow="0">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== Learning Roadmap ===================== -->
+  <main class="container py-4">
+    <div class="path-page mx-auto">
+      <h1 class="h2">Your learning path</h1>
+      <p class="text-secondary">Tap the glowing lesson to continue. Each lesson unlocks the next one.</p>
+      <nav id="pathRoot" aria-label="Lessons"><!-- rendered by js/components/roadmap.js --></nav>
+    </div>
+  </main>
+
+  <!-- Toast for locked lessons / messages -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex"><div class="toast-body fw-bold" id="toastMsg"></div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- App scripts: order matters (core → components → page) -->
+  <script src="js/core/data.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/ui.js"></script>
+  <script src="js/components/roadmap.js"></script>
+  <script src="js/pages/path.js"></script>
+</body>
+</html>
