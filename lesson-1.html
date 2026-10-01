@@ -77,17 +77,27 @@
       </div>
     </section>
 
-    <!-- Quick quiz: answers revealed with <details>, no JavaScript needed -->
+    <!-- Quick quiz: each button carries its own explanation (js/main.js shows it) -->
     <section>
       <h2>Quick check</h2>
-      <details>
-        <summary>A phone photo is raster or vector?</summary>
-        <p><strong>Raster.</strong> Photos are made of millions of pixels.</p>
-      </details>
-      <details>
-        <summary>Which stays sharp on a billboard: a JPEG or an SVG logo?</summary>
-        <p><strong>The SVG logo.</strong> Vectors are redrawn from maths at any size.</p>
-      </details>
+
+      <div class="question">
+        <p><strong>1. A phone photo is raster or vector?</strong></p>
+        <button type="button" class="answer" data-correct="true"
+          data-explain="A camera records the colour of millions of tiny points, so a photo is a grid of pixels: a raster.">Raster</button>
+        <button type="button" class="answer" data-correct="false"
+          data-explain="Vectors are shapes drawn from maths, like logos and icons. A camera can't capture shapes, only the colour of millions of pixels, so a photo is raster.">Vector</button>
+        <p class="result" aria-live="polite"></p>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Which stays sharp on a billboard?</strong></p>
+        <button type="button" class="answer" data-correct="false"
+          data-explain="A JPEG has a fixed number of pixels. Stretched to billboard size, each pixel becomes a big blurry block.">A JPEG</button>
+        <button type="button" class="answer" data-correct="true"
+          data-explain="An SVG stores shapes as maths, so it is redrawn perfectly sharp at any size, even on a billboard.">An SVG logo</button>
+        <p class="result" aria-live="polite"></p>
+      </div>
     </section>
 
     <p><a href="path.html" class="button">Finish lesson</a></p>

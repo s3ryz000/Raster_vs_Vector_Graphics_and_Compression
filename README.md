@@ -21,7 +21,7 @@ Open the folder in VS Code and either:
 | Audio | Native `<audio controls>` playing `assets/chime.wav` |
 | Interactive JS | Zoom slider comparing the raster and vector versions |
 
-The quiz uses `<details>` / `<summary>`, so it needs no JavaScript.
+The quiz uses answer buttons: each one stores its own explanation in a `data-explain` attribute, and `js/main.js` shows "Correct" or "Wrong" with that explanation.
 
 ## Files
 ```
@@ -29,6 +29,6 @@ index.html      sign-in
 path.html       welcome + learning path
 lesson-1.html   lesson content
 css/style.css   all styles (typography: Nunito, line-height 1.5, font-kerning, letter-spacing)
-js/main.js      remembers the name, runs the zoom slider
+js/main.js      remembers the name, checks quiz answers, runs the zoom slider
 assets/         PNG image and WAV audio
 ```

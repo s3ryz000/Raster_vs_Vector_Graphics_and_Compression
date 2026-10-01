@@ -9,7 +9,17 @@ if (learnerName) {
   document.querySelectorAll(".learner-name").forEach(el => el.textContent = learnerName);
 }
 
-// 2. Zoom slider (lesson page only): enlarge both images by the same amount
+// 2. Quiz buttons: say correct or wrong, then explain why
+document.querySelectorAll(".answer").forEach(button => {
+  button.addEventListener("click", () => {
+    const result = button.closest(".question").querySelector(".result");
+    const isCorrect = button.dataset.correct === "true";
+    result.textContent = (isCorrect ? "✔ Correct! " : "✘ Wrong. ") + button.dataset.explain;
+    result.className = isCorrect ? "result correct" : "result wrong";
+  });
+});
+
+// 3. Zoom slider (lesson page only): enlarge both images by the same amount
 const zoom = document.getElementById("zoom");
 if (zoom) {
   zoom.addEventListener("input", () => {
