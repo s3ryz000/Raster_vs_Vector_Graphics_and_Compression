@@ -1,0 +1,13 @@
+/* =========================================================
+   Navbar
+   ========================================================= */
+.app-nav {
+  background: var(--surface);
+  border-bottom: 2px solid var(--line);
+}
+.navbar-brand { font-weight: 900; color: var(--brand) !important; letter-spacing: -0.01em; }
+.stat { font-weight: 800; display: inline-flex; align-items: center; gap: .3rem; }
+.stat svg { width: 20px; height: 20px; }
+
+.progress { height: 12px; border-radius: 99px; background: var(--line); }
+.progress-bar { width: 0; background: var(--brand); border-radius: 99px; transition: width .4s ease; }

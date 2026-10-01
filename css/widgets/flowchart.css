@@ -1,0 +1,11 @@
+/* =========================================================
+   SVG flowchart: interactive hover states
+   ========================================================= */
+.flow { width: 100%; height: auto; font-family: inherit; }
+.flow .fnode { cursor: pointer; transition: transform .2s; transform-box: fill-box; transform-origin: center; }
+.flow .fnode rect { stroke-width: 3; transition: fill .2s; }
+.flow .fnode:hover, .flow .fnode:focus { transform: scale(1.06); outline: none; }
+.flow .fnode:hover rect, .flow .fnode:focus rect, .flow .fnode.is-selected rect { fill: #fff8d6; }
+.flow text { font-weight: 800; font-size: 15px; fill: var(--ink); pointer-events: none; }
+.flow .edge { stroke: #c4c4c4; stroke-width: 3; fill: none; stroke-dasharray: 6 6; animation: dash 1s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -12; } }

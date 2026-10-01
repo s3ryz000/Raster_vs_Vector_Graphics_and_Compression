@@ -1,0 +1,23 @@
+/* =========================================================
+   Chunky 3D buttons (Duolingo-style)
+   ========================================================= */
+.btn-chunky {
+  border: 0;
+  border-radius: 16px;
+  padding: .8rem 1.5rem;
+  color: #fff;
+  background: var(--brand);
+  box-shadow: 0 4px 0 var(--brand-dark);
+  transition: transform .08s, box-shadow .08s, filter .15s;
+}
+.btn-chunky:hover { color: #fff; filter: brightness(1.05); }
+.btn-chunky:active { transform: translateY(4px); box-shadow: 0 0 0 var(--brand-dark); }
+.btn-chunky:disabled { background: var(--locked); color: #aaa; box-shadow: 0 4px 0 var(--locked-dark); }
+.btn-chunky.blue { background: var(--blue); box-shadow: 0 4px 0 var(--blue-dark); }
+.btn-outline-chunky {
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--line);
+}

@@ -1,0 +1,40 @@
+/* =========================================================
+   Typography & micro-typography (Module 2)
+   ========================================================= */
+body {
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;              /* body copy: within the 1.4–1.6 range */
+  font-kerning: normal;          /* explicit kerning on all body text */
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;       /* tighten large display type */
+}
+h1 { font-size: clamp(1.75rem, 4vw, 2.4rem); }
+h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); }
+h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
+
+p { max-width: 68ch; }           /* comfortable measure */
+
+.eyebrow,
+.badge,
+.unit-label {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;        /* open up small caps-style labels */
+  font-size: 0.75rem;
+}
+
+.btn {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;        /* button labels read as UI, not prose */
+}
