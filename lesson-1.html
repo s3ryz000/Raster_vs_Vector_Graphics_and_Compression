@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 1 · Raster &amp; Vector Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a href="path.html" class="brand">← Back to path</a>
+  </header>
+
+  <main>
+    <p class="eyebrow">Unit 1 · Lesson 1</p>
+    <h1>Pixels vs. Paths</h1>
+
+    <!-- 1. Text content -->
+    <section>
+      <h2>Raster images: a grid of pixels</h2>
+      <p>A <strong>raster</strong> image is a grid of tiny squares called <strong>pixels</strong>. Each pixel stores one colour. Enlarging a raster stretches its pixels, so it turns blocky.</p>
+      <h2>Vector images: shapes made from maths</h2>
+      <p>A <strong>vector</strong> image stores instructions such as “draw a circle here”. The computer redraws the shapes at any size, so they always stay sharp.</p>
+    </section>
+
+    <!-- 2. Inline SVG diagram (hover effect is pure CSS) -->
+    <section>
+      <h2>Which type is it?</h2>
+      <svg class="diagram" viewBox="0 0 400 170" role="img" aria-label="Diagram: a digital image is either raster (pixels) or vector (paths)">
+        <path d="M200 50 V75 H100 V100 M200 75 H300 V100" fill="none" stroke="#999" stroke-width="2"/>
+        <g class="box"><rect x="125" y="10" width="150" height="40" rx="8"/><text x="200" y="35">Digital image</text></g>
+        <g class="box"><rect x="25" y="100" width="150" height="40" rx="8"/><text x="100" y="125">Raster · pixels</text></g>
+        <g class="box"><rect x="225" y="100" width="150" height="40" rx="8"/><text x="300" y="125">Vector · paths</text></g>
+      </svg>
+    </section>
+
+    <!-- 3. Raster image (a real 32 × 32 PNG) -->
+    <section>
+      <h2>A raster up close</h2>
+      <figure>
+        <img src="assets/landscape-32.png" class="pixelated" width="256" height="256"
+             alt="A tiny landscape picture made of 32 by 32 visible pixels">
+        <figcaption>This PNG is only 32 × 32 pixels (182 bytes). Shown 8× larger, you can see every pixel.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 4. Audio (native HTML5 player) -->
+    <section>
+      <h2>Sound is digital media too</h2>
+      <p>Audio files store thousands of <em>samples</em> per second, much like an image stores pixels.</p>
+      <audio controls src="assets/chime.wav">Your browser does not support the audio element.</audio>
+    </section>
+
+    <!-- 5. Interactive widget: zoom slider (js/main.js) -->
+    <section>
+      <h2>Try it: zoom in</h2>
+      <label for="zoom">Zoom level: <output id="zoomValue" for="zoom">1×</output></label>
+      <input type="range" id="zoom" min="1" max="8" value="1">
+      <div class="compare">
+        <figure>
+          <div class="zoom-box"><img id="rasterArt" src="assets/landscape-32.png" class="pixelated" width="64" height="64" alt="Raster version"></div>
+          <figcaption>Raster: gets blocky</figcaption>
+        </figure>
+        <figure>
+          <div class="zoom-box">
+            <svg id="vectorArt" viewBox="0 0 32 32" width="64" height="64" role="img" aria-label="Vector version">
+              <rect width="32" height="32" fill="#ddf4ff"/>
+              <circle cx="22" cy="9" r="4.5" fill="#ffc800"/>
+              <path d="M0 26 L11 12 L18 20 L22 16 L32 26 V32 H0 Z" fill="#58cc02"/>
+            </svg>
+          </div>
+          <figcaption>Vector: stays sharp</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Quick quiz: answers revealed with <details>, no JavaScript needed -->
+    <section>
+      <h2>Quick check</h2>
+      <details>
+        <summary>A phone photo is raster or vector?</summary>
+        <p><strong>Raster.</strong> Photos are made of millions of pixels.</p>
+      </details>
+      <details>
+        <summary>Which stays sharp on a billboard: a JPEG or an SVG logo?</summary>
+        <p><strong>The SVG logo.</strong> Vectors are redrawn from maths at any size.</p>
+      </details>
+    </section>
+
+    <p><a href="path.html" class="button">Finish lesson</a></p>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

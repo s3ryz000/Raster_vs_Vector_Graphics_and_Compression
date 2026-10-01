@@ -1,0 +1,61 @@
+/* Raster & Vector Academy: demo styles */
+
+/* Typography */
+body {
+  font-family: "Nunito", Arial, sans-serif;
+  line-height: 1.5;            /* body copy between 1.4 and 1.6 */
+  font-kerning: normal;
+  color: #333;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+h1, h2 { line-height: 1.2; letter-spacing: -0.02em; }
+.eyebrow, .button, label { letter-spacing: 0.05em; }
+.eyebrow { text-transform: uppercase; font-size: 0.8rem; font-weight: 700; color: #1899d6; margin-bottom: 0; }
+
+/* Header */
+header { padding: 16px 0; border-bottom: 2px solid #eee; }
+.brand { font-weight: 900; color: #46a302; text-decoration: none; }
+
+/* Form and buttons */
+label { display: block; font-weight: 700; margin-bottom: 4px; }
+input[type="text"] { width: 100%; max-width: 320px; padding: 8px; font: inherit; }
+.button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #58cc02;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Roadmap */
+.roadmap { list-style: none; padding: 0; }
+.roadmap li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.node {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 900; text-decoration: none; color: #fff;
+}
+.node.open { background: #58cc02; }
+.node.locked { background: #ddd; color: #999; }
+
+/* SVG diagram: hover effect is pure CSS */
+.diagram { width: 100%; max-width: 400px; }
+.diagram rect { fill: #fff; stroke: #333; stroke-width: 2; }
+.diagram text { text-anchor: middle; font-weight: 700; font-size: 14px; }
+.diagram .box:hover rect { fill: #fff3b0; }
+
+/* Images */
+.pixelated { image-rendering: pixelated; }   /* show real pixels, no blur */
+.compare { display: flex; gap: 16px; flex-wrap: wrap; }
+.zoom-box { width: 200px; height: 200px; overflow: auto; border: 2px solid #eee; }
+figcaption { font-size: 0.9rem; color: #666; }
