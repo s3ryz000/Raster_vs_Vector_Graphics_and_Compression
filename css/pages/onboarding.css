@@ -23,6 +23,19 @@
   gap: .5rem;
 }
 
+.chip-list button.chip {
+  cursor: pointer;
+  transition: transform .1s, background-color .15s, border-color .15s;
+}
+.chip-list button.chip:hover {
+  border-color: var(--blue);
+  color: var(--blue-dark);
+  transform: translateY(-2px);
+}
+.chip-list button.chip:active {
+  transform: translateY(1px);
+}
+
 /* Name form */
 .name-form .form-label { font-weight: 800; }
 .name-form .form-control {
@@ -38,7 +51,16 @@
 .welcome-points { padding-left: 1.2rem; }
 .welcome-points li + li { margin-top: .35rem; }
 
-/* Roadmap preview: a smaller, non-clickable copy of the path */
+/* Native modal fallback */
+.modal.show {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+/* Roadmap preview: interactive 5-lesson path preview */
 .preview-box {
   max-height: 280px;
   overflow-y: auto;
@@ -50,5 +72,6 @@
 .path-preview .unit-banner { padding: .6rem 1rem; }
 .path-preview .unit-banner h2 { font-size: 1rem; }
 .path-preview .path { padding-top: 2.5rem; gap: 2.25rem; }
-.path-preview .node { width: 52px; height: 52px; font-size: 1.1rem; }
+.path-preview .node { width: 52px; height: 52px; font-size: 1.1rem; cursor: pointer; }
 .path-preview .node svg { width: 22px; height: 22px; }
+

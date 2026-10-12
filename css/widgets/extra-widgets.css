@@ -1,0 +1,97 @@
+/* =========================================================
+   Styles for Phase 4 Widgets:
+   Bit Depth Calculator, RGB Mixer, RLE Widget, Subsampling Widget
+   ========================================================= */
+
+/* Shared widget container cards */
+.widget-box {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+/* 1. Bit Depth Calculator */
+.calc-display {
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+}
+.calc-val {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--brand);
+}
+
+/* 2. RGB Mixer */
+.rgb-swatch {
+  height: 120px;
+  border-radius: 14px;
+  border: 3px solid var(--line);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  color: #fff;
+  transition: background-color 0.1s ease;
+}
+.subpixel-grid {
+  display: flex;
+  gap: 3px;
+  height: 28px;
+  background: #111;
+  padding: 3px;
+  border-radius: 6px;
+}
+.subpixel {
+  flex: 1;
+  border-radius: 2px;
+  transition: opacity 0.1s ease;
+}
+.subpixel.red { background: #ff2222; }
+.subpixel.green { background: #22ff22; }
+.subpixel.blue { background: #2266ff; }
+
+/* 3. RLE Widget */
+.rle-box {
+  font-family: monospace;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  word-break: break-all;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+.ratio-badge {
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+}
+.ratio-good { background: #d7ffb8; color: #3b8700; }
+.ratio-bad { background: #ffdfe0; color: #d61f1f; }
+
+/* 4. Subsampling Widget */
+.subsampling-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  background: #222;
+  padding: 6px;
+  border-radius: 8px;
+}
+.chroma-block {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fff;
+}

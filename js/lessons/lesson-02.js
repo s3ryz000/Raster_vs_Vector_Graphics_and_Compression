@@ -1,25 +1,67 @@
-/* Lesson 2 · Resolution & zooming */
+/* Lesson 2 · RGB & Bit Depth (Unit 2: The World of Color) */
 LESSONS[2] = {
   steps: [
     {
-      title: "Resolution: how many pixels?",
+      title: "The Physics of Light: Additive RGB",
       html: `
-        <p class="lead">A raster image's <strong>resolution</strong> is its width × height in pixels, for example 1920 × 1080.</p>
-        <p>More pixels means more detail, but also a bigger file. A 4000 × 3000 photo has 12 million pixels; at 3 bytes per pixel that is about 36 MB before compression.</p>
+        <p class="lead">Computer screens emit light rather than reflecting ink. They produce color through the <strong>additive RGB color model</strong>.</p>
+        <h2 class="mt-4">Three Primaries: Red, Green, Blue</h2>
+        <p>In additive color theory, combining all three primaries at full intensity produces <strong>pure white light</strong>. Turning all three off produces <strong>pure black</strong>.</p>
+        <ul>
+          <li><strong>Red + Green =</strong> Yellow</li>
+          <li><strong>Green + Blue =</strong> Cyan</li>
+          <li><strong>Red + Blue =</strong> Magenta</li>
+        </ul>
         <div class="callout mt-3">
-          <h3 class="h6 fw-bold mb-1">PPI vs. pixels</h3>
-          <p class="mb-0"><strong>PPI</strong> (pixels per inch) only describes how tightly pixels are packed when shown or printed. It does not add detail: an image's pixel count is what really matters.</p>
+          <h2 class="h6 fw-bold mb-1">Additive (RGB) vs. Subtractive (CMYK)</h2>
+          <p class="mb-0">Screens emit light (RGB: starts black, adding light makes white). Printers absorb light using pigments (CMYK: starts white paper, adding ink subtracts light to make black).</p>
         </div>`,
     },
     {
-      eyebrow: "Try it · Interactive demo",
-      title: "Zooming can't invent detail",
-      html: `<p>Zooming a raster spreads the same pixels over more screen space. Watch how much bigger the raster would have to be to stay sharp.</p>`,
-      widget: "zoom",
+      eyebrow: "Interactive Color Lab",
+      title: "RGB Subpixel Mixer & Visualizer",
+      html: `
+        <p>Slide the Red, Green, and Blue channels between 0 and 255. Observe both the blended color and the simulated microscopic subpixels glowing beneath the screen surface.</p>`,
+      widget: "rgb",
     },
-    { type: "question", q: "A 100 × 100 image has how many pixels?", a: ["200", "1,000", "10,000", "100"], c: 2,
-      why: "Width × height: 100 × 100 = 10,000 pixels." },
-    { type: "question", q: "Raising an image's PPI setting without adding pixels…", a: ["Adds more detail", "Changes only its printed size", "Makes it a vector", "Doubles the file size"], c: 1,
-      why: "PPI just packs the same pixels closer together; detail stays the same." },
-  ],
+    {
+      eyebrow: "Interactive Calculator",
+      title: "Bit Depth & The Raw File Size Formula",
+      html: `
+        <p class="lead">Every digital pixel requires memory to store its colour information. <strong>Bit depth</strong> specifies how many binary bits are allocated to each individual pixel.</p>
+        <ul>
+          <li><strong>1-bit:</strong> 2 colours ($2^1$) — pure black & white monochrome.</li>
+          <li><strong>8-bit:</strong> 256 colours ($2^8$) — indexed palettes or grayscale.</li>
+          <li><strong>24-bit True Color:</strong> 16,777,216 colours ($2^{24}$) — 8 bits each for R, G, and B.</li>
+        </ul>
+        <div class="callout my-3">
+          <h2 class="h6 fw-bold mb-1">The Raw Size Formula</h2>
+          <p class="mb-0"><code>Raw Size (Bytes) = Width × Height × (Bit Depth ÷ 8)</code></p>
+        </div>
+        <p>Test the calculator below to see how resolution and bit depth dictate uncompressed memory size:</p>`,
+      widget: "bit-depth",
+    },
+    {
+      type: "question",
+      format: "multiple-choice",
+      q: "In the additive RGB color model, what color is created when Red and Green light combine at full intensity?",
+      a: ["Cyan", "Magenta", "Yellow", "Brown"],
+      c: 2,
+      why: "In additive light, Red + Green produces bright Yellow light."
+    },
+    {
+      type: "question",
+      format: "true-false",
+      q: "True or False: A 24-bit True Color image can represent approximately 16.7 million distinct colors.",
+      c: 0,
+      why: "True! 2 to the 24th power (2^24) equals exactly 16,777,216 distinct possible colors."
+    },
+    {
+      type: "question",
+      format: "fill-blank",
+      q: "What is the maximum integer value for an 8-bit color channel (from 0 to ...)?",
+      c: ["255"],
+      why: "An 8-bit channel stores 256 unique numbers, ranging from 0 (off) to 255 (maximum brightness)."
+    }
+  ]
 };

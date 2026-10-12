@@ -1,25 +1,139 @@
 /* =========================================================
    Chunky 3D buttons (Duolingo-style)
    ========================================================= */
-.btn-chunky {
+.btn-chunky,
+.btn.btn-chunky,
+a.btn.btn-chunky {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--brand-hover);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--brand-active);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-disabled-color: #888888;
+  --bs-btn-disabled-bg: var(--locked);
+  --bs-btn-disabled-border-color: transparent;
+
   border: 0;
   border-radius: 16px;
   padding: .8rem 1.5rem;
-  color: #fff;
-  background: var(--brand);
+  color: #ffffff !important;
+  background-color: var(--brand) !important;
+  background: var(--brand) !important;
   box-shadow: 0 4px 0 var(--brand-dark);
-  transition: transform .08s, box-shadow .08s, filter .15s;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .08s, box-shadow .08s, background-color .15s;
 }
-.btn-chunky:hover { color: #fff; filter: brightness(1.05); }
-.btn-chunky:active { transform: translateY(4px); box-shadow: 0 0 0 var(--brand-dark); }
-.btn-chunky:disabled { background: var(--locked); color: #aaa; box-shadow: 0 4px 0 var(--locked-dark); }
-.btn-chunky.blue { background: var(--blue); box-shadow: 0 4px 0 var(--blue-dark); }
-.btn-outline-chunky {
+
+/* Hover: rich, solid darker green shade with crisp contrast (never blends with white background) */
+.btn-chunky:hover:not(:disabled),
+.btn.btn-chunky:hover:not(:disabled),
+a.btn.btn-chunky:hover {
+  color: #ffffff !important;
+  background-color: var(--brand-hover) !important; /* #46a302 rich green */
+  background: var(--brand-hover) !important;
+  box-shadow: 0 4px 0 #368001;
+  text-decoration: none;
+  filter: none;
+}
+
+/* Active / pressed state */
+.btn-chunky:active:not(:disabled),
+.btn.btn-chunky:active:not(:disabled),
+a.btn.btn-chunky:active {
+  color: #ffffff !important;
+  background-color: var(--brand-active) !important; /* #3c8c01 */
+  background: var(--brand-active) !important;
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #368001;
+  text-decoration: none;
+}
+
+/* Focus visible for accessibility */
+.btn-chunky:focus-visible,
+.btn.btn-chunky:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.btn-chunky:disabled,
+.btn.btn-chunky:disabled {
+  background-color: var(--locked) !important;
+  background: var(--locked) !important;
+  color: #888888 !important;
+  box-shadow: 0 4px 0 var(--locked-dark);
+  cursor: not-allowed;
+  opacity: 1 !important;
+}
+
+/* Blue variant */
+.btn-chunky.blue,
+.btn.btn-chunky.blue {
+  --bs-btn-bg: var(--blue);
+  --bs-btn-hover-bg: var(--blue-hover);
+  background-color: var(--blue) !important;
+  background: var(--blue) !important;
+  box-shadow: 0 4px 0 var(--blue-dark);
+}
+.btn-chunky.blue:hover:not(:disabled),
+.btn.btn-chunky.blue:hover:not(:disabled) {
+  background-color: var(--blue-hover) !important;
+  background: var(--blue-hover) !important;
+  box-shadow: 0 4px 0 #137ea8;
+}
+.btn-chunky.blue:active:not(:disabled),
+.btn.btn-chunky.blue:active:not(:disabled) {
+  background-color: #1483b5 !important;
+  background: #1483b5 !important;
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #137ea8;
+}
+
+/* Outline variant */
+.btn-outline-chunky,
+.btn.btn-outline-chunky,
+a.btn.btn-outline-chunky {
+  --bs-btn-color: var(--ink);
+  --bs-btn-bg: var(--surface);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: #f0f4f8;
   border: 2px solid var(--line);
   border-radius: 16px;
-  background: var(--surface);
-  color: var(--ink);
+  padding: .75rem 1.5rem;
+  background-color: var(--surface) !important;
+  background: var(--surface) !important;
+  color: var(--ink) !important;
   box-shadow: 0 3px 0 var(--line);
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .08s, box-shadow .08s, background-color .15s, border-color .15s;
+}
+.btn-outline-chunky:hover,
+.btn.btn-outline-chunky:hover,
+a.btn.btn-outline-chunky:hover {
+  background-color: #eef2f6 !important;
+  background: #eef2f6 !important;
+  color: var(--ink) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 3px 0 #cbd5e1;
+  text-decoration: none;
+}
+.btn-outline-chunky:active,
+.btn.btn-outline-chunky:active,
+a.btn.btn-outline-chunky:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #cbd5e1;
 }
 
 /* Pill-shaped chips: labels and preset buttons */
@@ -31,5 +145,6 @@
   font-weight: 800;
   font-size: .85rem;
   letter-spacing: .04em;
+  color: var(--ink);
 }
 .chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }

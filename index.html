@@ -18,6 +18,7 @@
   <link href="css/components/buttons.css" rel="stylesheet">
   <link href="css/components/roadmap.css" rel="stylesheet">
   <link href="css/pages/onboarding.css" rel="stylesheet">
+  <link href="css/components/spec-table.css" rel="stylesheet">
   <link href="css/base/accessibility.css" rel="stylesheet">
 </head>
 
@@ -42,44 +43,100 @@
       <h1>Raster &amp; Vector Academy</h1>
       <p class="tagline">Learn how pictures are stored, scaled and squeezed, one bite-sized lesson at a time.</p>
       <ul class="chip-list mb-4">
-        <li class="chip">4 units</li>
-        <li class="chip">11 lessons</li>
-        <li class="chip">Final quiz</li>
+        <li><button type="button" class="chip" id="chipUnits">5 units</button></li>
+        <li><button type="button" class="chip" id="chipLessons">5 short lessons</button></li>
+        <li><button type="button" class="chip" id="chipFinal">Final quiz</button></li>
       </ul>
 
       <form class="name-form text-start" id="nameForm" novalidate>
         <label for="nameInput" class="form-label">What should we call you?</label>
         <input type="text" class="form-control mb-1" id="nameInput" name="name" autocomplete="given-name"
-               maxlength="30" required placeholder="Your name" aria-describedby="nameHelp nameError">
-        <div class="invalid-feedback" id="nameError">Please type a name to get started.</div>
+               maxlength="30" placeholder="Your name (e.g. Alex)" aria-describedby="nameHelp">
         <p class="form-text" id="nameHelp">No account needed. Your name and progress stay in this browser.</p>
-        <button class="btn btn-chunky w-100" type="submit">Start learning</button>
+        <div class="d-grid gap-2 mt-3">
+          <button class="btn btn-chunky w-100" type="submit" id="startLearningBtn">Start learning</button>
+          <button class="btn btn-outline-chunky w-100" type="button" id="previewRoadmapBtn">Preview 5-lesson path</button>
+        </div>
       </form>
     </div>
   </main>
+  <div class="container pb-5" style="max-width: 960px">
+      <!-- ===================== Technical Media Spec Table (Module 3) ===================== -->
+      <section class="spec-section" aria-labelledby="specHeading">
+        <p class="unit-label mb-0">Module 3</p>
+        <h2 id="specHeading">Technical Media Spec</h2>
+        <p class="small text-secondary">An audit of the media assets used in the lessons.</p>
+        <div id="specTable" class="table-responsive mt-3">
+          <table class="spec-table table mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Asset Name &amp; Format</th>
+                <th scope="col">Original Size → Compressed</th>
+                <th scope="col">Color Depth / Quantization</th>
+                <th scope="col">Compression Algorithm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">sample-photo.jpg<br><small class="text-secondary">JPEG</small></th>
+                <td class="mono">1,688 KB → 42 KB</td>
+                <td>24-bit TrueColor (8 bits × 3 channels)</td>
+                <td><span class="badge-algo">DCT + Huffman (lossy)</span></td>
+              </tr>
+              <tr>
+                <th scope="row">sample-photo.webp<br><small class="text-secondary">WebP</small></th>
+                <td class="mono">1,688 KB → 8.7 KB</td>
+                <td>24-bit TrueColor (8 bits × 3 channels)</td>
+                <td><span class="badge-algo">VP8 block pred. (lossy)</span></td>
+              </tr>
+              <tr>
+                <th scope="row">sample-logo.png<br><small class="text-secondary">PNG (RGBA)</small></th>
+                <td class="mono">625 KB → 10.5 KB</td>
+                <td>32-bit RGBA (8 bits × 4 channels)</td>
+                <td><span class="badge-algo">Deflate (lossless)</span></td>
+              </tr>
+              <tr>
+                <th scope="row">sample-logo-indexed.png<br><small class="text-secondary">PNG (palette)</small></th>
+                <td class="mono">625 KB → 6.1 KB</td>
+                <td>8-bit indexed (64-colour palette)</td>
+                <td><span class="badge-algo">Deflate (lossless) + quantization</span></td>
+              </tr>
+              <tr>
+                <th scope="row">sample-vector.svg<br><small class="text-secondary">SVG</small></th>
+                <td class="mono">N/A → 0.8 KB</td>
+                <td>Vector (resolution independent)</td>
+                <td><span class="badge-algo">XML text (paths)</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="small text-secondary mt-2 mb-0">Original sizes are raw uncompressed pixel data (width × height × bytes per pixel). Compressed sizes measured on disk. 1 KB = 1,024 bytes.</p>
+        </div>
+      </section>
+  </div>
 
   <!-- ===================== 2. Welcome popup with roadmap preview ===================== -->
   <div class="modal fade" id="welcomeModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="welcomeTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header border-0 pb-0">
-          <h2 class="modal-title" id="welcomeTitle">Welcome, <span id="welcomeName"></span>! 👋</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close and change name"></button>
+          <h2 class="modal-title" id="welcomeTitle">Welcome, <span id="welcomeName">Learner</span>! 👋</h2>
+          <button type="button" class="btn-close" id="closeModalBtn" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <p>Every image on a screen is either a <strong>grid of pixels</strong> (raster) or a <strong>set of shapes</strong> (vector). This course shows you the difference, when to use each, and how compression makes files smaller.</p>
           <ul class="welcome-points">
-            <li><strong>Short lessons:</strong> a few cards, a hands-on demo and a quick quiz.</li>
+            <li><strong>5 short lessons:</strong> a few cards, a hands-on demo and a quick quiz.</li>
             <li><strong>Earn XP and keep a streak</strong> by learning a little every day.</li>
             <li><strong>Unlock lessons in order:</strong> finishing one opens the next.</li>
           </ul>
-          <h3 class="eyebrow mt-3">Your roadmap</h3>
+          <h3 class="eyebrow mt-3">Your 5-lesson roadmap</h3>
           <div class="preview-box">
             <div id="previewPath" class="path-preview"><!-- rendered by js/components/roadmap.js --></div>
           </div>
         </div>
-        <div class="modal-footer border-0">
-          <button class="btn btn-chunky w-100" type="button" id="startBtn">Go to my path</button>
+        <div class="modal-footer border-0 d-grid gap-2">
+          <button class="btn btn-chunky w-100" type="button" id="startLesson1Btn">Start Lesson 1</button>
+          <button class="btn btn-outline-chunky w-100" type="button" id="startBtn">Go to my path</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,24 @@
+{
+  "name": "raster_vs_vector_graphics_and_compression-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s3ryz000/Raster_vs_Vector_Graphics_and_Compression.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/s3ryz000/Raster_vs_Vector_Graphics_and_Compression/issues"
+  },
+  "homepage": "https://github.com/s3ryz000/Raster_vs_Vector_Graphics_and_Compression#readme",
+  "dependencies": {
+    "sharp": "^0.35.5"
+  }
+}

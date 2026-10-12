@@ -11,7 +11,7 @@ LESSONS[1] = {
         <h2 class="mt-4">Vector images: shapes described by maths</h2>
         <p>A <strong>vector</strong> image stores <em>instructions</em> such as “draw a circle here, radius 40, filled orange”. The computer redraws those shapes at any size, so a vector logo looks just as sharp on a billboard as on a business card.</p>
         <div class="callout mt-3">
-          <h3 class="h6 fw-bold mb-1">What does this mean?</h3>
+          <h2 class="h6 fw-bold mb-1">What does this mean?</h2>
           <p class="mb-0"><strong>Resolution</strong> is how many pixels an image has. Raster images depend on it, while vector images ignore it.</p>
         </div>`,
     },
@@ -28,13 +28,13 @@ LESSONS[1] = {
         <figure class="mb-0">
           <picture>
             <source type="image/webp"
-                    srcset="https://picsum.photos/id/1015/480/300.webp 480w, https://picsum.photos/id/1015/960/600.webp 960w"
+                    srcset="assets/sample-photo.webp"
                     sizes="(min-width: 768px) 700px, 100vw">
-            <img src="https://picsum.photos/id/1015/960/600.jpg" class="img-fluid rounded-4 w-100"
-                 width="960" height="600" decoding="async"
+            <img src="assets/sample-photo.jpg" class="img-fluid rounded-4 w-100"
+                 width="960" height="600" loading="lazy" decoding="async"
                  alt="A river winding through a mountain valley, used as an example raster photograph">
           </picture>
-          <figcaption>Served as WebP at two sizes (480 px or 960 px wide). The browser downloads only the size your screen needs, which is an easy way to save bandwidth.</figcaption>
+          <figcaption>Served as WebP (8.7 KB) with a JPEG fallback (42 KB). The <code>&lt;picture&gt;</code> element lets the browser choose the best format it supports.</figcaption>
         </figure>`,
     },
     {
@@ -49,11 +49,17 @@ LESSONS[1] = {
       html: `<p>An MP3 stores thousands of <em>samples</em> per second, much like a raster stores pixels. This keyboard stores no audio at all. It uses the Web Audio API to <strong>generate sound from a formula</strong>, just as an SVG generates shapes. Play it with the mouse or the keys <kbd>A</kbd>–<kbd>K</kbd>.</p>`,
       widget: "synth",
     },
-    { type: "question", q: "A phone photo is made of…", a: ["Mathematical paths", "A grid of pixels", "Sound samples", "Fonts"], c: 1,
-      why: "Photos are raster images: millions of coloured pixels." },
-    { type: "question", q: "Which image stays sharp when enlarged to billboard size?", a: ["A JPEG photo", "A PNG screenshot", "An SVG logo", "A GIF"], c: 2,
-      why: "SVG is a vector format, so it is redrawn from maths at any size." },
-    { type: "question", q: "What happens to a raster image when you zoom in a lot?", a: ["It gets sharper", "Nothing changes", "It becomes pixelated", "It turns into a vector"], c: 2,
-      why: "Each pixel gets stretched into a visible block." },
+    {
+      type: "question", format: "multiple-choice", q: "A photo taken on a smartphone is fundamentally made of…", a: ["Mathematical paths", "A grid of pixels", "Continuous analog ink", "Typography vectors"], c: 1,
+      why: "Photographs are raster images composed of a rectangular grid of millions of coloured pixels."
+    },
+    {
+      type: "question", format: "true-false", q: "True or False: An SVG vector graphic loses sharpness and becomes blurry when scaled to billboard size.", c: 1,
+      why: "False! Vector graphics are redrawn from mathematical instructions, so they stay infinitely sharp at any scale."
+    },
+    {
+      type: "question", format: "fill-blank", q: "What is the single smallest coloured dot or unit in a raster image called?", c: ["pixel", "pixels"],
+      why: "A pixel (short for 'picture element') is the fundamental building block of raster bitmaps."
+    },
   ],
 };

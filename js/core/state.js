@@ -7,7 +7,15 @@ const DEFAULT = { name: "", welcomed: false, done: 0, xp: 0, hearts: 5, streak: 
 let state = load();
 
 function load() {
-  try { return { ...DEFAULT, ...JSON.parse(localStorage.getItem(STORE)) }; }
+  try {
+    const data = { ...DEFAULT, ...JSON.parse(localStorage.getItem(STORE)) };
+    if (typeof data.done !== "number" || isNaN(data.done)) data.done = 0;
+    if (typeof TOTAL === "number" && data.done > TOTAL + 1) data.done = TOTAL;
+    if (typeof data.hearts !== "number" || isNaN(data.hearts)) data.hearts = 5;
+    if (typeof data.xp !== "number" || isNaN(data.xp)) data.xp = 0;
+    if (typeof data.streak !== "number" || isNaN(data.streak)) data.streak = 0;
+    return data;
+  }
   catch { return { ...DEFAULT }; }
 }
 function save() {
@@ -18,11 +26,12 @@ function save() {
 function resetProgress() { state = { ...DEFAULT, name: state.name, welcomed: true }; save(); }
 function signOut() { state = { ...DEFAULT }; save(); }
 
-// Pages behind sign-in call this first; it sends signed-out visitors to the start page
+// Pages behind sign-in call this first; ensures a friendly name exists so learners are never trapped
 function requireUser() {
-  if (state.name) return true;
-  location.replace("index.html");
-  return false;
+  if (state.name && state.name.trim()) return true;
+  state.name = "Learner";
+  save();
+  return true;
 }
 
 // Streak: +1 for learning on consecutive days, back to 1 after a gap

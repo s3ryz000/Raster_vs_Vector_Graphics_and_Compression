@@ -17,3 +17,74 @@
 .feedback { border-radius: 14px; padding: .9rem 1.1rem; font-weight: 700; }
 .feedback.ok { background: #d7ffb8; color: #58a700; }
 .feedback.no { background: #ffdfe0; color: #ea2b2b; }
+
+/* True / False chunky buttons */
+.tf-answer {
+  font-size: 1.15rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Fill in the blank input */
+.fill-input {
+  border: 2px solid var(--line);
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  padding: .85rem 1.1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.fill-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.2);
+  outline: none;
+}
+.fill-input.is-valid {
+  border-color: var(--brand);
+  background-color: #f3ffe6;
+}
+.fill-input.is-invalid {
+  border-color: var(--red);
+  background-color: #fff0f1;
+}
+
+/* Out of Hearts Modal Overlay */
+.hearts-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn .2s ease-out;
+}
+.hearts-modal {
+  background: var(--surface);
+  border-radius: 24px;
+  border: 3px solid var(--line);
+  border-bottom-width: 6px;
+  padding: 2rem 1.75rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  animation: popIn .25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hearts-modal-emoji {
+  font-size: 4rem;
+  margin-bottom: .5rem;
+  line-height: 1;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

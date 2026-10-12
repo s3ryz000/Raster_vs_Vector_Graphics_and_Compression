@@ -1,26 +1,62 @@
-/* Lesson 4 · Paths & points */
+/* Lesson 4 · Run-Length Encoding & PNG (Unit 4: Lossless Compression) */
 LESSONS[4] = {
   steps: [
     {
-      title: "Vectors are built from paths",
+      title: "Run-Length Encoding: The Simplest Compression",
       html: `
-        <p class="lead">A vector shape is a <strong>path</strong>: a list of <strong>anchor points</strong> joined by straight lines or curves.</p>
-        <figure class="text-center">
-          <svg class="lesson-figure" viewBox="0 0 300 160" role="img" aria-label="A curved path with two anchor points and the handles that bend the curve">
-            <path d="M30 130 C 90 10, 210 10, 270 130" fill="none" stroke="#58cc02" stroke-width="5"/>
-            <line x1="30" y1="130" x2="90" y2="10" stroke="#1cb0f6" stroke-width="2" stroke-dasharray="5 4"/>
-            <line x1="270" y1="130" x2="210" y2="10" stroke="#1cb0f6" stroke-width="2" stroke-dasharray="5 4"/>
-            <circle cx="90" cy="10" r="6" fill="#1cb0f6"/><circle cx="210" cy="10" r="6" fill="#1cb0f6"/>
-            <rect x="22" y="122" width="16" height="16" fill="#fff" stroke="#3c3c3c" stroke-width="3"/>
-            <rect x="262" y="122" width="16" height="16" fill="#fff" stroke="#3c3c3c" stroke-width="3"/>
-          </svg>
-          <figcaption>Squares are anchor points. The blue dots are <strong>handles</strong> that bend the curve between them (a Bézier curve).</figcaption>
-        </figure>
-        <p>Paths can then be <strong>stroked</strong> (outlined) and <strong>filled</strong> with colour. Because only the points are stored, the file stays tiny.</p>`,
+        <p class="lead"><strong>Run-Length Encoding (RLE)</strong> is an elegant lossless algorithm that replaces consecutive identical symbols with a run length and symbol value.</p>
+        <h2 class="mt-4">How RLE Works</h2>
+        <p>Consider a horizontal scanline in a black-and-white fax transmission or flat icon:</p>
+        <pre class="p-3 bg-light border rounded font-monospace small"><code>Uncompressed: WWWWWWWWWWWWBBBBWWWW (20 characters)
+RLE Encoded:  12W4B4W               (6 characters)</code></pre>
+        <p>The uncompressed stream takes 20 bytes, while the RLE stream takes only 6 bytes—a <strong>70% file size reduction</strong> with zero lost information!</p>
+        <div class="callout mt-3">
+          <h2 class="h6 fw-bold mb-1">Negative Compression (Data Expansion)</h2>
+          <p class="mb-0">When data has no consecutive runs (like <code>ABCDEFGH</code>), RLE turns it into <code>1A1B1C1D1E1F1G1H</code> (16 bytes, 100% larger!). RLE only excels when data has long runs of identical values.</p>
+        </div>`,
     },
-    { type: "question", q: "What do a curve's handles control?", a: ["Its colour", "How it bends", "Its file format", "Its resolution"], c: 1,
-      why: "Handles pull the curve towards them, setting its shape." },
-    { type: "question", q: "A vector circle is stored as…", a: ["Thousands of pixels", "A centre point and a radius", "A photo", "Sound samples"], c: 1,
-      why: "Only the maths is stored; the circle is drawn fresh each time." },
-  ],
+    {
+      eyebrow: "Interactive Laboratory",
+      title: "RLE Interactive Compressor",
+      html: `
+        <p>Type repetitive strings into the input field below to observe the encoded stream and real-time compression ratio. Test the presets to see ideal runs vs. negative expansion:</p>`,
+      widget: "rle",
+    },
+    {
+      title: "Inside the PNG Format: Filters & DEFLATE",
+      html: `
+        <p class="lead">Developed as an open, patent-free format, <strong>Portable Network Graphics (PNG)</strong> is the standard for lossless web graphics.</p>
+        <h2 class="mt-4">The Two-Stage Compression Pipeline</h2>
+        <ol>
+          <li><strong>Delta Filtering:</strong> Replaces absolute pixel color values with differences relative to neighboring pixels above and to the left.</li>
+          <li><strong>DEFLATE Engine:</strong> Compresses the filtered bytes using LZ77 sliding-window dictionary matching and Huffman coding.</li>
+        </ol>
+        <div class="callout mt-3">
+          <h2 class="h6 fw-bold mb-1">True 8-Bit Alpha Transparency</h2>
+          <p class="mb-0">Unlike GIF's harsh 1-bit transparency (a pixel was either 100% solid or 100% invisible), PNG supports 256 levels of smooth translucency for anti-aliased shadows and edges.</p>
+        </div>`,
+    },
+    {
+      type: "question",
+      format: "multiple-choice",
+      q: "How would the sequence 'AAAAABBB' be encoded using basic Run-Length Encoding (RLE)?",
+      a: ["8AB", "5A3B", "A5B3", "AB53"],
+      c: 1,
+      why: "RLE records the run length followed by the character: 5 'A's and 3 'B's = 5A3B."
+    },
+    {
+      type: "question",
+      format: "true-false",
+      q: "True or False: Run-Length Encoding is guaranteed to make every digital file smaller regardless of content.",
+      c: 1,
+      why: "False! When applied to data with no repeated runs, RLE adds counter overhead and makes the file larger."
+    },
+    {
+      type: "question",
+      format: "fill-blank",
+      q: "Which compression algorithm combining LZ77 and Huffman coding powers PNG?",
+      c: ["deflate"],
+      why: "The DEFLATE algorithm powers PNG (as well as ZIP and Gzip) lossless compression."
+    }
+  ]
 };

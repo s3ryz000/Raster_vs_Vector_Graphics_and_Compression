@@ -28,6 +28,8 @@ function renderStats() {
 function setProgress(fraction) {
   const bar = document.getElementById("progressBar");
   if (!bar) return;
-  bar.style.width = Math.round(fraction * 100) + "%";
-  bar.parentElement.setAttribute("aria-valuenow", Math.round(fraction * bar.parentElement.getAttribute("aria-valuemax")));
+  const clamped = Math.min(1, Math.max(0, Number(fraction) || 0));
+  bar.style.width = Math.round(clamped * 100) + "%";
+  const max = Number(bar.parentElement.getAttribute("aria-valuemax")) || 100;
+  bar.parentElement.setAttribute("aria-valuenow", Math.round(clamped * max));
 }

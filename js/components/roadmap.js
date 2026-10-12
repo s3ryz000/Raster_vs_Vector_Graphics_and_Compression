@@ -30,8 +30,9 @@ function renderPath(root) {
     html += `</ol></section>`;
   });
   // Final quiz node: opens once every lesson is done
-  const finalStatus = state.done >= TOTAL ? "active" : "locked";
+  const finalStatus = state.done > TOTAL ? "done" : state.done >= TOTAL ? "active" : "locked";
+  const finalInner = finalStatus === "done" ? ICON_CHECK : ICON_TROPHY;
   html += `<ol class="path"><li><button class="node is-${finalStatus}" type="button" data-id="final" data-status="${finalStatus}"
-    aria-label="Final quiz (${finalStatus})">${ICON_TROPHY}</button><p class="node-label">Final quiz</p></li></ol>`;
+    aria-label="Final quiz (${finalStatus})">${finalInner}</button><p class="node-label">Final quiz</p></li></ol>`;
   root.innerHTML = html;
 }

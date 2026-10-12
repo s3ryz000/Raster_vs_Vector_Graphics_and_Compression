@@ -15,8 +15,11 @@
     const btn = e.target.closest(".node");
     if (!btn) return;
     const { id, status } = btn.dataset;
-    if (status === "locked") return notify("🔒 Finish the previous lesson first!");
-    if (id === "final") return notify("🏆 The final quiz is coming soon.");
+    if (status === "locked") return notify("🔒 Finish the previous lessons first!");
+    if (id === "final") {
+      location.href = "lesson.html?id=final";
+      return;
+    }
     location.href = `lesson.html?id=${id}`;
   });
 

@@ -82,6 +82,7 @@
 .unit-2 { background: var(--blue); }
 .unit-3 { background: #ce82ff; }
 .unit-4 { background: #ff9600; }
+.unit-5 { background: #ff4b72; }
 
 .path .zig-0, .path .zig-4 { --x: 0px; }
 .path .zig-1, .path .zig-3 { --x: -55px; }

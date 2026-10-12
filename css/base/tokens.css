@@ -3,14 +3,17 @@
    ========================================================= */
 :root {
   --brand: #58cc02;        /* active / success green */
+  --brand-hover: #46a302;  /* solid hover green (never blends with white background) */
   --brand-dark: #46a302;
+  --brand-active: #3c8c01;
   --blue: #1cb0f6;
+  --blue-hover: #1899d6;
   --blue-dark: #1899d6;
   --gold: #ffc800;
   --gold-dark: #e5a500;
   --red: #ff4b4b;
   --ink: #3c3c3c;
-  --muted: #777;
+  --muted: #595959;
   --line: #e5e5e5;
   --locked: #e5e5e5;
   --locked-dark: #c4c4c4;
